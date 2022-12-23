@@ -59,13 +59,52 @@ body {
 }
 
 /* Headers */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, th {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+#logout-button {
+    border: none;
+}
+
+.inc-wrapper {
+    max-height: 288px;
+}
+
+.exp-wrapper {
+    max-height: fit-content;
+}
+
+.cat-wrapper {
+    max-height: 204px;
 }
 
 .sbm-btn {
     font-size: 120%;
     font-weight: 600;
+}
+
+/* layout */
+/* table styling */
+thead {
+    background-color: var(--tert);
+}
+
+tbody {
+    background-color: #a7d7c565;
+}
+
+tr:nth-child(even) {
+    background-color: #73cfad65;
+}
+
+tfoot {
+    background-color: #73cfadb0;
+}
+
+th, td {
+    padding: .5em 1em;
+    border: 2px solid var(--prim);
 }
 
 /* animations */
