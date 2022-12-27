@@ -1,14 +1,25 @@
 // Boiler-plate code ***Will need to be updated!*** 
 const User = require('./User');
-const Project = require('./Project');
+const Category = require('./category');
+const Transactions = require('./transactions');
 
-User.hasMany(Project, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+User.hasMany(Transactions, {
+  foreignKey: 'user_id'
 });
-
-Project.belongsTo(User, {
+Transactions.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-module.exports = { User, Project };
+Category.hasMany(Transactions, {
+  foreignKey: 'category_id'
+});
+Transactions.belongsTo(Category, {
+  foreignKey: 'category_id'
+});
+
+
+
+
+
+
+module.exports = { User, Category, Transactions };

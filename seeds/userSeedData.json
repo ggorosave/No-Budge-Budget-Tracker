@@ -1,0 +1,25 @@
+[
+    {
+     
+      "user_name": "arellanoe",
+      "email": "arellanoe@email.com",
+      "name":"Eduardo Arellano",
+      "password": "eduardo1"
+    },
+    {
+     
+      "user_name": "ggorosave",
+      "email": "grant@email.com",
+      "name":"Grant Gorosave",
+      "password": "gran1234"
+    },
+    {
+
+      
+      "user_name": "isabella-pettini",
+      "email": "isabella@email.com",
+      "name":"Isabella Pettini",
+      "password": "bella123!"
+    }
+  ]
+  
