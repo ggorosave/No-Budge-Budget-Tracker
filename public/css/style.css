@@ -59,7 +59,13 @@ body {
 }
 
 /* Headers */
-h1, h2, h3, h4, h5, h6, th {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 
@@ -67,24 +73,11 @@ h1, h2, h3, h4, h5, h6, th {
     border: none;
 }
 
-.inc-wrapper {
-    max-height: 288px;
-}
-
-.exp-wrapper {
-    max-height: fit-content;
-}
-
-.cat-wrapper {
-    max-height: 204px;
-}
-
 .sbm-btn {
     font-size: 120%;
     font-weight: 600;
 }
 
-/* layout */
 /* table styling */
 thead {
     background-color: var(--tert);
@@ -102,20 +95,46 @@ tfoot {
     background-color: #73cfadb0;
 }
 
-th, td {
+th,
+td {
     padding: .5em 1em;
     border: 2px solid var(--prim);
 }
 
 /* animations */
-.nav-link:hover, .logout-btn:hover {
+.nav-link:hover,
+.logout-btn:hover {
     background-color: #88beaa;
     color: var(--prim);
 }
 
 /* Media Queries */
 @media (max-width: 576px) {
+
     h1 {
         font-size: 200%;
+    }
+
+    .side-table {
+        overflow: scroll;
+    }
+
+    .inc-wrapper,
+    .exp-wrapper,
+    .cat-wrapper {
+        min-width: fit-content;
+        margin: 1em .5em;
+    }
+
+    .inc-wrapper {
+        max-height: 288px;
+    }
+
+    .exp-wrapper {
+        max-height: fit-content;
+    }
+
+    .cat-wrapper {
+        max-height: 204px;
     }
 }
