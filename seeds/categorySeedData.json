@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "category_name": "INCOME"
+ 
+    },
+    {
+        "id": 2,
+        "category_name": "GROCERY"
+   
+      },
+      {
+        "id": 3,
+        "category_name": "RENT"
+   
+      },
+
+      {
+        "id": 4,
+        "category_name": "SUPPLIES"
+   
+      },
+
+      {
+        "id": 5,
+        "category_name": "MISC"
+   
+      }
+
+
+
+  ]
+  
