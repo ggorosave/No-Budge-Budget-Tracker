@@ -69,8 +69,19 @@ th {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 
+#logo {
+    position: relative;
+    width: 3em;
+    border-radius: 50%;
+    top: .35em;
+}
+
 #logout-button {
     border: none;
+}
+
+#login-wrapper {
+    width: 50%;
 }
 
 .sbm-btn {
@@ -116,19 +127,25 @@ td {
     }
 
     header, .side-table {
+        top: 0;
         position: fixed;
         z-index: 1;
+    }
+
+    #login-wrapper {
+        margin: 14em 0;
+        width: 100%;
     }
     
     .side-table {
         left: 0;
-        margin-top: 10em;
+        margin-top: 12.3em;
         overflow: scroll;
         background-color: var(--prim);
     }
 
     .reports {
-        margin-top: 36em;
+        margin-top: 40em;
         z-index: 0;
     }
 
