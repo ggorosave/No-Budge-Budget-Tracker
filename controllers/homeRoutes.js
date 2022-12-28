@@ -16,3 +16,14 @@ router.get('/', (req, res) => {
     }
 
 });
+
+router.get('/manage-transactions', (req, res) => {
+
+    try {
+
+        res.render('manage-transactions')
+    } catch(err) {
+        res.status(500).json(err);
+    }
+
+});

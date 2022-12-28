@@ -140,12 +140,13 @@ td {
     .side-table {
         left: 0;
         margin-top: 12.3em;
+        width: 100%;
         overflow: scroll;
         background-color: var(--prim);
     }
 
     .reports {
-        margin-top: 40em;
+        margin-top: 38em;
         z-index: 0;
     }
 
