@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS no_budge;
+
+CREATE DATABASE no_budge;
