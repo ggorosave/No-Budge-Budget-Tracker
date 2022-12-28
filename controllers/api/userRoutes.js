@@ -1,6 +1,50 @@
 // Boiler-plate code ***Will need to be updated!*** 
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Category, Transactions } = require('../../models');
+
+// DELETE - For Grant's reference only
+router.get('/', async (req, res) => {
+  try {
+
+    const userData = await User.findAll({
+      include: [{ model: Transactions }]
+    });
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
+
+router.get('/transactions', async (req, res) => {
+  try {
+
+    // const transactionData = await Transactions.findAll({
+    //   include: [{ model: Category }]
+    // });
+
+    const transactionData = await Transactions.findAll({
+      where: {
+        // TODO: pull the user id from the session (i.e. req.session.user_id)
+        user_id: 1
+      },
+      include: [
+        {
+          model: Category
+        }
+      ]
+    });
+
+    const transactions = await transactionData.map((transaction) => transaction.get({ plain: true }));
+
+    console.log(transactions);
+
+    res.status(200).json(transactionData);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
+// ^^^DELETE - For Grant's reference only^^^
 
 router.post('/', async (req, res) => {
   try {
@@ -16,6 +60,7 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 
 router.post('/login', async (req, res) => {
   try {
@@ -40,7 +85,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 

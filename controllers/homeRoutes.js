@@ -6,6 +6,7 @@ const withAuth = require('../utils/auth');
 
 module.exports = router;
 
+// Homepage/Login
 router.get('/', (req, res) => {
 
     try {
@@ -17,9 +18,37 @@ router.get('/', (req, res) => {
 
 });
 
-router.get('/manage-transactions', (req, res) => {
+// Sign Up page
+router.get('/signup', (req, res) => {
 
     try {
+
+        res.render('signup')
+    } catch(err) {
+        res.status(500).json(err);
+    }
+
+});
+
+// Manage Transaction Page
+router.get('/manage-transactions', async (req, res) => {
+
+    try {
+        const transactionData = await Transactions.findAll({
+            where: {
+                // TODO: pull the user id from the session (i.e. req.session.user_id)
+                user_id: 1
+            },
+            include: [
+                {
+                    model: Category
+                }
+            ]
+        });
+
+        const transactions = await transactionData.map((transaction) => transaction.get({ plain: true }));
+
+        console.log(transactions);
 
         res.render('manage-transactions')
     } catch(err) {

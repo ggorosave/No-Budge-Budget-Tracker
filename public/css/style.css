@@ -80,7 +80,7 @@ th {
     border: none;
 }
 
-#login-wrapper {
+#login-wrapper, #signup-wrapper {
     width: 50%;
 }
 
@@ -132,7 +132,7 @@ td {
         z-index: 1;
     }
 
-    #login-wrapper {
+    #login-wrapper, #signup-wrapper {
         margin: 14em 0;
         width: 100%;
     }
