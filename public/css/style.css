@@ -1,0 +1,153 @@
+/* Color Palette:
+prim: #f4f9f4;
+sec: #a7d7c5;
+tert: #74b49b;
+quat: #5c8d89;
+*/
+
+/* Fonts:
+font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'IBM Plex Sans Condensed', sans-serif;
+*/
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --prim: #f4f9f4;
+    --sec: #a7d7c5;
+    --tert: #74b49b;
+    --quat: #5c8d89;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+}
+
+/* Color Class */
+.bg-prim {
+    background-color: var(--prim);
+}
+
+.bg-sec {
+    background-color: var(--sec);
+}
+
+.bg-tert {
+    background-color: var(--tert);
+}
+
+.bg-quat {
+    background-color: var(--quat);
+}
+
+.fnt-prim {
+    color: var(--prim);
+}
+
+.fnt-sec {
+    color: var(--sec);
+}
+
+.fnt-tert {
+    color: var(--tert);
+}
+
+.fnt-quat {
+    color: var(--quat);
+}
+
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+#logout-button {
+    border: none;
+}
+
+.sbm-btn {
+    font-size: 120%;
+    font-weight: 600;
+}
+
+/* table styling */
+thead {
+    background-color: var(--tert);
+}
+
+tbody {
+    background-color: #a7d7c565;
+}
+
+tr:nth-child(even) {
+    background-color: #73cfad65;
+}
+
+tfoot {
+    background-color: #73cfadb0;
+}
+
+th,
+td {
+    padding: .5em 1em;
+    border: 2px solid var(--prim);
+}
+
+/* animations */
+.nav-link:hover,
+.logout-btn:hover {
+    background-color: #88beaa;
+    color: var(--prim);
+}
+
+/* Media Queries */
+@media (max-width: 576px) {
+
+    h1 {
+        font-size: 200%;
+    }
+
+    header, .side-table {
+        position: fixed;
+        z-index: 1;
+    }
+    
+    .side-table {
+        left: 0;
+        margin-top: 10em;
+        overflow: scroll;
+        background-color: var(--prim);
+    }
+
+    .reports {
+        margin-top: 36em;
+        z-index: 0;
+    }
+
+    .inc-wrapper,
+    .exp-wrapper,
+    .cat-wrapper {
+        min-width: fit-content;
+        margin: 1em .5em;
+    }
+
+    .inc-wrapper {
+        max-height: 288px;
+    }
+
+    .exp-wrapper {
+        max-height: fit-content;
+    }
+
+    .cat-wrapper {
+        max-height: 204px;
+    }
+}
