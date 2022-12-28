@@ -1,5 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const dayjs = require('dayjs');
+
+// dayjs().format('MM/DD/YYYY')
 
 class Transactions extends Model { }
 
@@ -39,7 +42,10 @@ Transactions.init(
 
     transaction_date: {
       type: DataTypes.DATEONLY,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
+      get: function() {
+        return dayjs(this.getDataValue('transaction_date')).format('MM/DD/YYYY')
+      },
     },
 
 
