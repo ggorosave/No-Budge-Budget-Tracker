@@ -1,9 +1,9 @@
 // Boiler-plate code ***Will need to be updated!*** 
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
-const catgoryRoutes = require('./categoryRoutes');
+const categoryRoutes = require('./categoryRoutes');
 
 router.use('/users', userRoutes);
-router.use('/categories', catgoryRoutes);
+router.use('/categories', categoryRoutes);
 
 module.exports = router;
