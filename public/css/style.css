@@ -108,7 +108,7 @@ tfoot {
 
 th,
 td {
-    padding: .5em 1em;
+    padding: .25em .5em;
     border: 2px solid var(--prim);
 }
 
@@ -132,7 +132,7 @@ td {
         z-index: 1;
     }
 
-    #login-wrapper, #signup-wrapper {
+    #tr-wrapper, #signup-wrapper {
         margin: 14em 0;
         width: 100%;
     }

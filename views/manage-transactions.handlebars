@@ -2,7 +2,7 @@
 
     <section class="side-table mx-2 d-flex flex-md-column">
 
-        {{!-- <!-- Income --> --}}
+        {{!-- <!-- Income Adder --> --}}
         <div class="inc-wrapper bg-sec mt-3 pt-2 pb-3 px-3 rounded">
 
             <h3 class="text-center">Add Income</h3>
@@ -20,7 +20,7 @@
             </form>
         </div>
 
-        {{!-- <!-- Expense --> --}}
+        {{!-- <!-- Expense Adder --> --}}
         <div class="exp-wrapper bg-sec mt-3 pt-2 pb-3 px-3 rounded">
 
             <h3 class="text-center">Add Expense</h3>
@@ -49,7 +49,7 @@
             </form>
         </div>
 
-        {{!-- <!-- Category --> --}}
+        {{!-- <!-- Category Adder --> --}}
         <div class="cat-wrapper bg-sec my-3 pt-2 pb-3 px-3 rounded">
 
             <h3 class="text-center">Add Category</h3>
@@ -68,159 +68,27 @@
     {{!-- <!-- Reports --> --}}
     <section class="reports w-100">
 
+        {{#each categories as |category|}}
         <table class="my-3 rounded col-12">
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th class="text-center">Category Item</th>
+                    <th class="text-center">{{category_name}}</th>
                     <th class="text-right">Amount</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>2022-20-12</td>
-                    <td>Some Item 1</td>
-                    <td class="text-right">10.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 2</td>
-                    <td class="text-right">300.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
+                {{#each transactions as |transaction|}}
+                {{> transaction-details}}
+                {{/each}}
             </tbody>
             <tfoot>
                 <th colspan="2">Total:</th>
-                <td class="text-right">315.00</td>
+                <td class="text-right">00.00</td>
             </tfoot>
         </table>
+        {{/each}}
 
-        <table class="my-3 rounded col-12">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th class="text-center">Category Item</th>
-                    <th class="text-right">Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2022-20-12</td>
-                    <td>Some Item 1</td>
-                    <td class="text-right">10.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 2</td>
-                    <td class="text-right">300.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <th colspan="2">Total:</th>
-                <td class="text-right">315.00</td>
-            </tfoot>
-        </table>
-
-        <table class="my-3 rounded col-12">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th class="text-center">Category Item</th>
-                    <th class="text-right">Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2022-20-12</td>
-                    <td>Some Item 1</td>
-                    <td class="text-right">10.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 2</td>
-                    <td class="text-right">300.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <th colspan="2">Total:</th>
-                <td class="text-right">315.00</td>
-            </tfoot>
-        </table>
-
-        <table class="my-3 rounded col-12">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th class="text-center">Category Item</th>
-                    <th class="text-right">Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2022-20-12</td>
-                    <td>Some Item 1</td>
-                    <td class="text-right">10.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 2</td>
-                    <td class="text-right">300.00</td>
-                </tr>
-                <tr>
-                    <td>2022-21-12</td>
-                    <td>Some Item 3</td>
-                    <td class="text-right">5.00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <th colspan="2">Total:</th>
-                <td class="text-right">315.00</td>
-            </tfoot>
-        </table>
 
     </section>
 

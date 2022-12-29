@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     try {
 
         res.render('homepage')
-    } catch(err) {
+    } catch (err) {
         res.status(500).json(err);
     }
 
@@ -24,7 +24,7 @@ router.get('/signup', (req, res) => {
     try {
 
         res.render('signup')
-    } catch(err) {
+    } catch (err) {
         res.status(500).json(err);
     }
 
@@ -34,24 +34,27 @@ router.get('/signup', (req, res) => {
 router.get('/manage-transactions', async (req, res) => {
 
     try {
-        const transactionData = await Transactions.findAll({
-            where: {
-                // TODO: pull the user id from the session (i.e. req.session.user_id)
-                user_id: 1
-            },
+        
+        const transactionData = await Category.findAll({
             include: [
                 {
-                    model: Category
+                    model: Transactions,
+                    where: {
+                        // TODO: pull the user id from the session (i.e. req.session.user_id)
+                        user_id: 2
+                    },
+                    attributes: ['transaction_date', 'amount', 'item_name']
                 }
-            ]
+            ],
         });
 
-        const transactions = await transactionData.map((transaction) => transaction.get({ plain: true }));
+        const categories = await transactionData.map((category) => category.get({ plain: true }));
 
-        console.log(transactions);
-
-        res.render('manage-transactions')
-    } catch(err) {
+        res.render('manage-transactions', {
+            // transactions
+            categories
+        });
+    } catch (err) {
         res.status(500).json(err);
     }
 
