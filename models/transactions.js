@@ -1,7 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const dayjs = require('dayjs');
 
-class Transactions extends Model {}
+// dayjs().format('MM/DD/YYYY')
+
+class Transactions extends Model { }
 
 Transactions.init(
   {
@@ -21,41 +24,46 @@ Transactions.init(
         key: 'id'
       },
       onDelete: 'SET NULL'
-      
-      
+
+
     },
 
     category_id: {
-        type: DataTypes.INTEGER,
-        //allowNull: false,
-        references: {
-          model: "category",
-          key: 'id'
-        },
-        onDelete: 'SET NULL'
-        
-        
+      type: DataTypes.INTEGER,
+      //allowNull: false,
+      references: {
+        model: "category",
+        key: 'id'
       },
-
-      transaction_date: {
-        type: DataTypes.DATE },
+      onDelete: 'SET NULL'
 
 
-        amount: {
-            type: DataTypes.INTEGER ,
-            allowNull: false
-        },
+    },
 
-        item_name: {
-            type: DataTypes.STRING ,
-            
-        },
-
-      
+    transaction_date: {
+      type: DataTypes.DATEONLY,
+      defaultValue: DataTypes.NOW,
+      get: function() {
+        return dayjs(this.getDataValue('transaction_date')).format('MM/DD/YYYY')
+      },
+    },
 
 
-        
-  
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+
+    item_name: {
+      type: DataTypes.STRING,
+
+    },
+
+
+
+
+
+
   },
   {
     sequelize,

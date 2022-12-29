@@ -1,6 +1,7 @@
 // Boiler-plate code ***Will need to be updated!*** 
 const router = require('express').Router();
-const { User } = require('../../models');
+const { json } = require('express');
+const { User, Category, Transactions } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
@@ -16,6 +17,7 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 
 router.post('/login', async (req, res) => {
   try {
