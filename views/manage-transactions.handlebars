@@ -38,11 +38,9 @@
                     <label for="expense-category">Category:</label>
                     <select id="expense-category" class="form-control">
                         <option value="none">Select a category...</option>
-                        <option value="none">Groceries</option>
-                        <option value="none">Bills</option>
-                        <option value="none">Health</option>
-                        <option value="none">Fun</option>
-                        <option value="none">Miscellaneous</option>
+                        {{#each categories as |category|}}
+                        <option value="{{category_name}}">{{category_name}}</option>
+                        {{/each}}
                     </select>
                 </div>
                 <button id="submit-expense" type="submit" class="btn btn-block sbm-btn bg-tert mt-4">+ Add</button>
