@@ -41,7 +41,7 @@ router.get('/manage-transactions', async (req, res) => {
                     model: Transactions,
                     where: {
                         // TODO: pull the user id from the session (i.e. req.session.user_id)
-                        user_id: 2
+                        user_id: req.session.user_id
                     },
                     attributes: ['transaction_date', 'amount', 'item_name']
                 }
