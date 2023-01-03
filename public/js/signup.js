@@ -11,22 +11,19 @@ const signUpFormHandler = async (event) => {
     // checks that user input all fields
     if (name && email && password) {
 
-        window.alert('Sign up info recieved!');
-
-        // UNDO COMMENTS BLLOW AFTER USER ROUTES ARE FINISHED
         // makes fetch request to user api (may change depending on routes)
-        // const response = await fetch('/api/users', {
-        //     method: 'POST',
-        //     body: JSON.stringify({ name, email, password }),
-        //     headers: { 'Content-Type': 'application/json'},
-        // });
+        const response = await fetch('/api/signup', {
+            method: 'POST',
+            body: JSON.stringify({ name, email, password }),
+            headers: { 'Content-Type': 'application/json'},
+        });
         
         // sends user to the manage-transaction page if sign up was successful
-        // if (response.ok) {
-        //     document.location.replace('/manage-transactions');
-        // } else {
-        //     window.alert(response.statusText);
-        // }
+        if (response.ok) {
+            document.location.replace('/manage-transactions');
+        } else {
+            window.alert(response.statusText);
+        }
     }
 
 }
