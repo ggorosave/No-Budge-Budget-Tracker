@@ -31,7 +31,7 @@ router.get('/signup', (req, res) => {
 });
 
 // Manage Transaction Page
-router.get('/manage-transactions', async (req, res) => {
+router.get('/manage-transactions', withAuth,  async (req, res) => {
 
     try {
         
