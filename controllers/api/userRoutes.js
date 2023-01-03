@@ -1,7 +1,6 @@
 // Boiler-plate code ***Will need to be updated!*** 
 const router = require('express').Router();
-const { json } = require('express');
-const { User, Category, Transactions } = require('../../models');
+const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
@@ -49,6 +48,22 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
+});
+
+router.post('/signup', async (req, res) => {
+    try {
+      if (!req.body.email || !req.body.password) {
+        return res.status(400).json({ message: 'You must enter an email and password to sign up. '})
+      }
+      const userData = await User.create(req.body)
+      req.session.save(() => {
+        req.session.user_id = userData.id
+        req.session.logged_in = true
+        res.json({ user: userData, message: 'Your profile has been created.'})
+      })
+    } catch (err) {
+      res.status(500).json(err)
+    }
 });
 
 router.post('/logout', (req, res) => {
