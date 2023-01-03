@@ -2,7 +2,7 @@
 
     <section class="side-table mx-2 d-flex flex-md-column">
 
-        {{!-- <!-- Income Adder --> --}}
+        {{!-- Income Adder --}}
         <div class="inc-wrapper bg-sec mt-3 pt-2 pb-3 px-3 rounded">
 
             <h3 class="text-center">Add Income</h3>
@@ -20,7 +20,7 @@
             </form>
         </div>
 
-        {{!-- <!-- Expense Adder --> --}}
+        {{!-- Expense Adder --}}
         <div class="exp-wrapper bg-sec mt-3 pt-2 pb-3 px-3 rounded">
 
             <h3 class="text-center">Add Expense</h3>
@@ -38,18 +38,17 @@
                     <label for="expense-category">Category:</label>
                     <select id="expense-category" class="form-control">
                         <option value="none">Select a category...</option>
-                        <option value="none">Groceries</option>
-                        <option value="none">Bills</option>
-                        <option value="none">Health</option>
-                        <option value="none">Fun</option>
-                        <option value="none">Miscellaneous</option>
+                        {{!-- How to skip income? --}}
+                        {{#each categories as |category|}}
+                        <option value="{{id}}">{{category_name}}</option>
+                        {{/each}}
                     </select>
                 </div>
                 <button id="submit-expense" type="submit" class="btn btn-block sbm-btn bg-tert mt-4">+ Add</button>
             </form>
         </div>
 
-        {{!-- <!-- Category Adder --> --}}
+        {{!-- Category Adder --}}
         <div class="cat-wrapper bg-sec my-3 pt-2 pb-3 px-3 rounded">
 
             <h3 class="text-center">Add Category</h3>
@@ -65,7 +64,7 @@
 
     </section>
 
-    {{!-- <!-- Reports --> --}}
+    {{!-- Reports --}}
     <section class="reports w-100">
 
         {{#each categories as |category|}}
@@ -97,5 +96,7 @@
 
     </section>
 
-    {{!-- <!-- Report Wrapper End --> --}}
+    {{!-- Report Wrapper End --}}
 </div>
+
+<script src="./js/adders.js"></script>
