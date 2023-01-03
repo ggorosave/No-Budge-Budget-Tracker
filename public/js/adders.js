@@ -28,9 +28,40 @@ const addIncomeFormHandler = async (event) => {
         // }
     }
 
+};
 
+const addExpenseFormHandler = async (event) => {
+
+    // user inputs
+    const expenseName = document.querySelector('#expense-name').value.trim();
+    const expenseAmount = document.querySelector('#expense-amount').value.trim()
+    const categoryId = document.querySelector('#expense-category').value.trim()
+
+    if (expenseName && expenseAmount && categoryId) {
+
+        console.log('name: ' + expenseName);
+        console.log('amount: ' + expenseAmount);
+        console.log('category_id: ' + categoryId);
+
+        window.alert('Expense input recieved!')
+
+        // makes fetch request to user api
+        // const response = await fetch('/api/expense', {
+        //     method: 'POST',
+        //     body: JSON.stringify({ expenseName, expenseAmount, categoryId }),
+        //     headers: { 'Content-Type': 'application/json'},
+        // });
+
+        // if (response.ok) {
+        //     document.location.reload();
+        // } else {
+        //     window.alert(response.statusText);
+        // }
+    }
 
 };
 
 // Add income button event listener
 document.querySelector('#submit-income').addEventListener('click', addIncomeFormHandler);
+// Add expense button event listener
+document.querySelector('#submit-expense').addEventListener('click', addExpenseFormHandler);
