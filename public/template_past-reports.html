@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Budget Budget Tracker</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- custom stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body class="bg-prim">
+
+    <header class="bg-quat d-flex flex-column flex-lg-row justify-content-end justify-content-lg-between align-items-lg-center py-2">
+       
+        <div class="logo-name-wrapper d-flex align-items-center justify-content-center">
+            <figure class="mx-2">
+                <img id="logo" src="./images/no-budge-logo.png" alt="No Budge Logo" >
+            </figure>
+    
+            <div class="heading-wrapper">
+                <h1 class="mx-2 fnt-prim">No Budge Budget Tracker</h1>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <ul class="nav container-fluid justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link bg-tert fnt-prim rounded py-1 px-2 mx-2 my-1" href="#">Manage Transactions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bg-tert fnt-prim rounded py-1 px-2 mx-2 my-1" href="#">Previous Months</a>
+                </li>
+                <li class="nav-item">
+                    <button id="logout-button" type="button" class="logout-btn btn bg-tert fnt-prim rounded py-1 px-2 mx-2 my-1">Logout</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container container-fluid mw-100">
+
+        <div class="report-wrapper d-flex flex-column flex-md-row justify-content-lg-between">
+
+            <section class="side-table mx-2 d-flex flex-md-column">
+            
+                <!-- Income -->
+                <div class="inc-wrapper bg-sec mt-3 pt-2 pb-3 px-3 rounded">
+                    
+                    <h3 class="text-center">Add Income</h3>
+        
+                    <form>
+                        <div class="form-group">
+                            <label for="income-name">Income Name:</label>
+                            <input id="income-name" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="income-amount">Income Amount:</label>
+                            <input id="income-amount" type="number" class="form-control">
+                        </div>
+                        <button id="submit-income"  type="submit" class="btn btn-block sbm-btn bg-tert mt-4">+ Add</button>
+                    </form>
+                </div>
+    
+                <!-- Expense -->
+                <div class="exp-wrapper bg-sec mt-3 pt-2 pb-3 px-3 rounded">
+                    
+                    <h3 class="text-center">Add Expense</h3>
+        
+                    <form>
+                        <div class="form-group">
+                            <label for="expense-name">Expense Name:</label>
+                            <input id="expense-name" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="expense-amount">Expense Amount:</label>
+                            <input id="expense-amount" type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="expense-category">Category:</label>
+                            <select id="expense-category" class="form-control">
+                                <option value="none">Select a category...</option>
+                                <option value="none">Groceries</option>
+                                <option value="none">Bills</option>
+                                <option value="none">Health</option>
+                                <option value="none">Fun</option>
+                                <option value="none">Miscellaneous</option>
+                            </select>
+                        </div>
+                        <button id="submit-expense"  type="submit" class="btn btn-block sbm-btn bg-tert mt-4">+ Add</button>
+                    </form>
+                </div>
+    
+                <!-- Category -->
+                <div class="cat-wrapper bg-sec my-3 pt-2 pb-3 px-3 rounded">
+                    
+                    <h3 class="text-center">Add Category</h3>
+        
+                    <form>
+                        <div class="form-group">
+                            <label for="category-name">Category Name:</label>
+                            <input id="category-name" type="text" class="form-control">
+                        </div>
+                        <button id="submit-category"  type="submit" class="btn btn-block sbm-btn bg-tert mt-4">+ Add</button>
+                    </form>
+                </div>
+    
+            </section>
+
+            <!-- Reports -->
+            <section class="reports w-100">
+    
+                <table class="my-3 mx-1 rounded col-12">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th class="text-center">Category Item</th>
+                            <th class="text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2022-20-12</td>
+                            <td>Some Item 1</td>
+                            <td class="text-right">10.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 2</td>
+                            <td class="text-right">300.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <th colspan="2">Total:</th>
+                        <td class="text-right">315.00</td>
+                    </tfoot>
+                </table>
+    
+                <table class="my-3 rounded col-12">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th class="text-center">Category Item</th>
+                            <th class="text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2022-20-12</td>
+                            <td>Some Item 1</td>
+                            <td class="text-right">10.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 2</td>
+                            <td class="text-right">300.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <th colspan="2">Total:</th>
+                        <td class="text-right">315.00</td>
+                    </tfoot>
+                </table>
+    
+                <table class="my-3 rounded col-12">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th class="text-center">Category Item</th>
+                            <th class="text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2022-20-12</td>
+                            <td>Some Item 1</td>
+                            <td class="text-right">10.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 2</td>
+                            <td class="text-right">300.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <th colspan="2">Total:</th>
+                        <td class="text-right">315.00</td>
+                    </tfoot>
+                </table>
+    
+                <table class="my-3 rounded col-12">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th class="text-center">Category Item</th>
+                            <th class="text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2022-20-12</td>
+                            <td>Some Item 1</td>
+                            <td class="text-right">10.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 2</td>
+                            <td class="text-right">300.00</td>
+                        </tr>
+                        <tr>
+                            <td>2022-21-12</td>
+                            <td>Some Item 3</td>
+                            <td class="text-right">5.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <th colspan="2">Total:</th>
+                        <td class="text-right">315.00</td>
+                    </tfoot>
+                </table>
+    
+            </section>   
+
+            <!-- Report Wrapper End -->
+        </div>   
+        
+    </main>
+    
+</body>
+</html>

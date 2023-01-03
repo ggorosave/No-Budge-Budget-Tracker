@@ -32,6 +32,8 @@ const addIncomeFormHandler = async (event) => {
 
 const addExpenseFormHandler = async (event) => {
 
+    event.preventDefault();
+
     // user inputs
     const expenseName = document.querySelector('#expense-name').value.trim();
     const expenseAmount = document.querySelector('#expense-amount').value.trim()
@@ -61,7 +63,39 @@ const addExpenseFormHandler = async (event) => {
 
 };
 
+const addCategoryFormHandler = async (event) => {
+
+    event.preventDefault();
+
+    // user input
+    const categoryName = document.querySelector('#category-name').value.trim();
+
+    if (categoryName) {
+
+        console.log('name: ' + categoryName);
+
+        window.alert('Category input recieved!')
+
+        // makes fetch request to user api
+        // const response = await fetch('/api/category', {
+        //     method: 'POST',
+        //     body: JSON.stringify({ categoryName }),
+        //     headers: { 'Content-Type': 'application/json'},
+        // });
+
+        // if (response.ok) {
+        //     document.location.reload();
+        // } else {
+        //     window.alert(response.statusText);
+        // }
+
+    };
+
+};
+
 // Add income button event listener
 document.querySelector('#submit-income').addEventListener('click', addIncomeFormHandler);
 // Add expense button event listener
 document.querySelector('#submit-expense').addEventListener('click', addExpenseFormHandler);
+// Add category button event listener
+document.querySelector('#submit-category').addEventListener('click', addCategoryFormHandler);
