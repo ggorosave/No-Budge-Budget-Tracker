@@ -35,9 +35,11 @@
                 <li class="nav-item">
                     <a class="nav-link bg-tert fnt-prim rounded py-1 px-2 mx-2 my-1" href="#">Previous Months</a>
                 </li>
+                {{#if logged_in}}
                 <li class="nav-item">
                     <button id="logout-button" type="button" class="logout-btn btn bg-tert fnt-prim rounded py-1 px-2 mx-2 my-1">Logout</button>
                 </li>
+                {{/if}}
             </ul>
         </nav>
     </header>
@@ -49,4 +51,9 @@
     </main>
     
 </body>
+
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{/if}}
+
 </html>
