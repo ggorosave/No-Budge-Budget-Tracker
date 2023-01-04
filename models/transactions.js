@@ -16,28 +16,14 @@ Transactions.init(
     },
 
 
-    user_id: {
-      type: DataTypes.INTEGER,
-      //allowNull: false,
-      references: {
-        model: "user",
-        key: 'id'
-      },
-      onDelete: 'SET NULL'
-
-
+    item_name: {
+      type: DataTypes.STRING,
+      // allowNull: false
     },
 
-    category_id: {
+    amount: {
       type: DataTypes.INTEGER,
-      //allowNull: false,
-      references: {
-        model: "category",
-        key: 'id'
-      },
-      onDelete: 'SET NULL'
-
-
+      // allowNull: false
     },
 
     transaction_date: {
@@ -47,22 +33,28 @@ Transactions.init(
         return dayjs(this.getDataValue('transaction_date')).format('MM/DD/YYYY')
       },
     },
-
-
-    amount: {
+    
+    category_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      // allowNull: false,
+      references: {
+        model: "category",
+        key: 'id'
+      },
+      onDelete: 'SET NULL'
     },
 
-    item_name: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
+      // allowNull: false,
+      references: {
+        model: "user",
+        key: 'id'
+      },
+      onDelete: 'SET NULL'
+
 
     },
-
-
-
-
-
 
   },
   {

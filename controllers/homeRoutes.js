@@ -40,7 +40,6 @@ router.get('/manage-transactions', withAuth,  async (req, res) => {
                 {
                     model: Transactions,
                     where: {
-                        // TODO: pull the user id from the session (i.e. req.session.user_id)
                         user_id: req.session.user_id
                     },
                     attributes: ['transaction_date', 'amount', 'item_name']
@@ -53,6 +52,7 @@ router.get('/manage-transactions', withAuth,  async (req, res) => {
         res.render('manage-transactions', {
             // transactions
             categories,
+            user_id: req.session.user_id,
             logged_in: req.session.logged_in
         });
     } catch (err) {

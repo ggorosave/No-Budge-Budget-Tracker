@@ -9,7 +9,6 @@ const loginFormHandler = async (event) => {
     // if the user has entered an email and password
     if (email && password) {     
 
-        // UNDO COMMENTS BLLOW AFTER USER ROUTES ARE FINISHED
         // sends a fetch request to the user api (may change depending on routes)
         const response = await fetch('/api/users/login', {
             method: 'POST',

@@ -1,3 +1,4 @@
+-- Active: 1669948530267@@127.0.0.1@3306@no_budge
 DROP DATABASE IF EXISTS no_budge;
 
 CREATE DATABASE no_budge;
