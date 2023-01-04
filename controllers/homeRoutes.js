@@ -47,11 +47,19 @@ router.get('/manage-transactions', withAuth,  async (req, res) => {
             ],
         });
 
+        const catsData = await Category.findAll()
+
+        
         const categories = await transactionData.map((category) => category.get({ plain: true }));
+
+        const cats = await catsData.map((cat) => cat.get({ plain: true }));
+        
+        console.log(cats);
 
         res.render('manage-transactions', {
             // transactions
             categories,
+            cats,
             user_id: req.session.user_id,
             logged_in: req.session.logged_in
         });

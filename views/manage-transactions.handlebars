@@ -21,7 +21,7 @@
                     <select id="transaction-category" class="form-control">
                         <option value="none">Select a category...</option>
                         {{!-- How to skip income? --}}
-                        {{#each categories as |category|}}
+                        {{#each cats as |cat|}}
                         <option value="{{id}}">{{category_name}}</option>
                         {{/each}}
                     </select>
