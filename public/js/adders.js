@@ -1,64 +1,29 @@
+// const dateGetter = require('../../utils/date');
 
-const addIncomeFormHandler = async (event) => {
-
-    event.preventDefault();
-
-    // user inputs
-    const incomeName = document.querySelector('#income-name').value.trim();
-    const incomeAmount = document.querySelector('#income-amount').value.trim();
-
-    if (incomeName && incomeAmount) {
-
-        console.log('name: ' + incomeName);
-        console.log('amount: ' + incomeAmount);
-
-        window.alert('Income input recieved!')
-
-        // makes fetch request to user api (category id will be assigned in routes)
-        // const response = await fetch('/api/income', {
-        //     method: 'POST',
-        //     body: JSON.stringify({ incomeName, incomeAmount }),
-        //     headers: { 'Content-Type': 'application/json'},
-        // });
-
-        // if (response.ok) {
-        //     document.location.reload();
-        // } else {
-        //     window.alert(response.statusText);
-        // }
-    }
-
-};
-
-const addExpenseFormHandler = async (event) => {
+const addTransactionFormHandler = async (event) => {
 
     event.preventDefault();
 
     // user inputs
-    const expenseName = document.querySelector('#expense-name').value.trim();
-    const expenseAmount = document.querySelector('#expense-amount').value.trim()
-    const categoryId = document.querySelector('#expense-category').value.trim()
+    const item_name = document.querySelector('#transaction-name').value.trim();
+    const amount = document.querySelector('#transaction-amount').value.trim()
+    const transaction_date = dateGetter();
+    const category_id = document.querySelector('#transaction-category').value.trim()
 
-    if (expenseName && expenseAmount && categoryId) {
-
-        console.log('name: ' + expenseName);
-        console.log('amount: ' + expenseAmount);
-        console.log('category_id: ' + categoryId);
-
-        window.alert('Expense input recieved!')
+    if (item_name && amount && category_id) {
 
         // makes fetch request to user api
-        // const response = await fetch('/api/expense', {
-        //     method: 'POST',
-        //     body: JSON.stringify({ expenseName, expenseAmount, categoryId }),
-        //     headers: { 'Content-Type': 'application/json'},
-        // });
+        const response = await fetch('/api/transactions', {
+            method: 'POST',
+            body: JSON.stringify({ item_name, amount, transaction_date, category_id }),
+            headers: { 'Content-Type': 'application/json'},
+        });
 
-        // if (response.ok) {
-        //     document.location.reload();
-        // } else {
-        //     window.alert(response.statusText);
-        // }
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            window.alert(response.statusText);
+        }
     }
 
 };
@@ -68,34 +33,40 @@ const addCategoryFormHandler = async (event) => {
     event.preventDefault();
 
     // user input
-    const categoryName = document.querySelector('#category-name').value.trim();
+    const category_name = document.querySelector('#category-name').value.trim();
 
-    if (categoryName) {
+    if (category_name) {
 
-        console.log('name: ' + categoryName);
+        console.log('name: ' + category_name);
 
-        window.alert('Category input recieved!')
+        // window.alert('Category input recieved!')
 
         // makes fetch request to user api
-        // const response = await fetch('/api/category', {
-        //     method: 'POST',
-        //     body: JSON.stringify({ categoryName }),
-        //     headers: { 'Content-Type': 'application/json'},
-        // });
+        const response = await fetch('/api/categories', {
+            method: 'POST',
+            body: JSON.stringify({ category_name }),
+            headers: { 'Content-Type': 'application/json'},
+        });
 
-        // if (response.ok) {
-        //     document.location.reload();
-        // } else {
-        //     window.alert(response.statusText);
-        // }
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            window.alert(response.statusText);
+        }
 
     };
 
 };
 
+const dateGetter = () => {
+    const today = new Date();
+
+    return `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
+};
+
 // Add income button event listener
-document.querySelector('#submit-income').addEventListener('click', addIncomeFormHandler);
-// Add expense button event listener
-document.querySelector('#submit-expense').addEventListener('click', addExpenseFormHandler);
+// document.querySelector('#submit-income').addEventListener('click', addIncomeFormHandler);
+// Add transaction button event listener
+document.querySelector('#submit-transaction').addEventListener('click', addTransactionFormHandler);
 // Add category button event listener
 document.querySelector('#submit-category').addEventListener('click', addCategoryFormHandler);
