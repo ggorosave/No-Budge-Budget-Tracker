@@ -113,6 +113,10 @@ td {
     border: 2px solid var(--prim);
 }
 
+.hide {
+    display: none;
+}
+
 /* Month Links */
 .month-links {
     list-style: none;
@@ -127,9 +131,11 @@ td {
 
 /* animations */
 .nav-link:hover,
-.logout-btn:hover {
+.logout-btn:hover,
+.month-link:hover {
     background-color: #88beaa;
     color: var(--prim);
+    text-decoration: none;
 }
 
 /* Media Queries */
@@ -153,6 +159,7 @@ td {
     .side-table {
         left: 0;
         margin-top: 12.3em;
+        padding-bottom: .25em;
         width: 100%;
         overflow: scroll;
         background-color: var(--prim);
@@ -160,6 +167,11 @@ td {
 
     .reports {
         margin-top: 38em;
+        z-index: 0;
+    }
+
+    .past-reports {
+        margin-top: 16em;
         z-index: 0;
     }
 

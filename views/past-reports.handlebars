@@ -1,0 +1,82 @@
+<div class="report-wrapper d-flex flex-column flex-md-row justify-content-lg-between">
+
+    <section class="side-table mx-2">
+
+        <ul class="month-links mt-3 w-100 d-flex flex-row flex-md-column">
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/1" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">January</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/2" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">February</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/3" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">March</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/4" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">April</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/5" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">May</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/6" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">June</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/7" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">July</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/8" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">August</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/9"
+                    class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">September</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/10" class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">October</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/11"
+                    class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">November</a>
+            </li>
+            <li class="mt-2 mx-1 w-100">
+                <a href="/past-reports/12"
+                    class="month-link bg-tert fnt-prim px-2 py-1 rounded text-center">December</a>
+            </li>
+        </ul>
+
+    </section>
+
+    {{!-- Reports --}}
+    <section class="past-reports w-100">
+
+        {{#each categories as |category|}}
+        <table class="my-3 rounded col-12">
+            <colgroup>
+                <col span="1" style="width: 10%;">
+                <col span="1" style="width: 50%;">
+                <col span="1" style="width: 10%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th class="text-center">{{category_name}}</th>
+                    <th class="text-right">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each transactions as |transaction|}}
+                {{> transaction-details}}
+                {{/each}}
+            </tbody>
+            <tfoot>
+                <th colspan="2">Total:</th>
+                <td class="text-right">00.00</td>
+            </tfoot>
+        </table>
+        {{/each}}
+
+
+    </section>
+
+    {{!-- Report Wrapper End --}}
+</div>
