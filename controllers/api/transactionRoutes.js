@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
         {
           model: Transactions,
           where: {
-            user_id: 1,
+            user_id: req.session.user_id,
             // Limits data to retrieve transactions only from this month
             // transaction_date: {
             //     [Op.between]: [startDate(), endDate()],

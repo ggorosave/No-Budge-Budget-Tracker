@@ -73,6 +73,17 @@ router.get('/manage-transactions', withAuth,  async (req, res) => {
 
 });
 
+// Route for chart-view
+router.get('/chart-view', withAuth, async (req, res) => {
+    try {
+         res.render('chart-view', {
+            user_id: req.session.user_id,
+         })
+    } catch (err) {
+         res.status(500).json(err);
+     }
+ });
+
 // Past Reports Page
 router.get('/past-reports/:month', withAuth,  async (req, res) => {
 
