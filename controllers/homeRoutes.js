@@ -68,3 +68,11 @@ router.get('/manage-transactions', withAuth,  async (req, res) => {
     }
 
 });
+
+router.get('/chart-view', withAuth, async (req, res) => {
+   try {
+        res.render('chart-view')
+   } catch (err) {
+        res.status(500).json(err);
+    }
+});
