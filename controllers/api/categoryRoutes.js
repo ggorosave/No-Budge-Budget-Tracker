@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// route to create data
 router.post('/', withAuth, async (req, res) => {
   try {
     const newCategory = await Category.create({

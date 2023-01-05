@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const { Op } = require("sequelize");
 const { User, Category, Transactions } = require('../models');
+const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 const { dateGetter, getStartDate, getEndDate, startDate, endDate } = require('../utils/date.js')
 
@@ -47,15 +48,12 @@ router.get('/manage-transactions', withAuth,  async (req, res) => {
                         // }
                     },
                     attributes: ['transaction_date', 'amount', 'item_name']
-
                 },
-
             ],
         });
 
         const catsData = await Category.findAll()
 
-        
         const categories = await transactionData.map((category) => category.get({ plain: true }));
 
         const cats = await catsData.map((cat) => cat.get({ plain: true }));
