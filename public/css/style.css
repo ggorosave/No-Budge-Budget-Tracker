@@ -193,4 +193,9 @@ td {
     .cat-wrapper {
         max-height: 204px;
     }
+
+    #myChart {
+        margin-top: 16em;
+        width: 100;
+    }
 }
