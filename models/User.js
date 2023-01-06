@@ -1,15 +1,14 @@
-// Boiler-plate code ***Will need to be updated!*** 
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+// Some code from mini-project used here
 class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-// bare bones user info will need to be updated:
 User.init(
   {
     id: {

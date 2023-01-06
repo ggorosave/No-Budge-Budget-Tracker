@@ -1,4 +1,3 @@
-// Boiler-plate code ***Will need to be updated!*** 
 const router = require('express').Router();
 const { User } = require('../../models');
 
