@@ -116,6 +116,13 @@ router.get('/past-reports/:month', withAuth, async (req, res) => {
                     attributes: ['transaction_date', 'amount', 'item_name']
                 }
             ],
+
+            attributes: {
+                include: [
+                    'category_name',
+                    [sequelize.literal(`SUM(transactions.amount) OVER (PARTITION BY category_name)`), 'total']
+                ]
+            }
         });
 
 
