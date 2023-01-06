@@ -1,7 +1,7 @@
 // This is where tell the server what data and where to render it
 const router = require('express').Router();
 const { Op } = require("sequelize");
-const { User, Category, Transactions } = require('../models');
+const { Category, Transactions } = require('../models');
 const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 const { dateGetter, getStartDate, getEndDate, startDate, endDate } = require('../utils/date.js')
@@ -116,6 +116,13 @@ router.get('/past-reports/:month', withAuth, async (req, res) => {
                     attributes: ['transaction_date', 'amount', 'item_name']
                 }
             ],
+
+            attributes: {
+                include: [
+                    'category_name',
+                    [sequelize.literal(`SUM(transactions.amount) OVER (PARTITION BY category_name)`), 'total']
+                ]
+            }
         });
 
 
