@@ -1,8 +1,10 @@
 // This is where tell the server what data and where to render it
 const router = require('express').Router();
+const { Op } = require("sequelize");
 const { User, Category, Transactions } = require('../models');
-const { beforeFindAfterOptions } = require('../models/User');
+const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
+const { dateGetter, getStartDate, getEndDate, startDate, endDate } = require('../utils/date.js')
 
 module.exports = router;
 
@@ -10,6 +12,10 @@ module.exports = router;
 router.get('/', (req, res) => {
 
     try {
+
+        if (req.session.logged_in) {
+            res.redirect('manage-transactions');
+        }
 
         res.render('homepage')
     } catch (err) {
@@ -23,6 +29,10 @@ router.get('/signup', (req, res) => {
 
     try {
 
+        if (req.session.logged_in) {
+            res.redirect('manage-transactions');
+        }
+
         res.render('signup')
     } catch (err) {
         res.status(500).json(err);
@@ -31,30 +41,38 @@ router.get('/signup', (req, res) => {
 });
 
 // Manage Transaction Page
-router.get('/manage-transactions', withAuth,  async (req, res) => {
+router.get('/manage-transactions', withAuth, async (req, res) => {
 
     try {
-        
+
         const transactionData = await Category.findAll({
             include: [
                 {
                     model: Transactions,
                     where: {
-                        user_id: req.session.user_id
+                        user_id: req.session.user_id,
+                        // transaction_date: {
+                        //     [Op.between]: [startDate(), endDate()],
+                        // }
                     },
                     attributes: ['transaction_date', 'amount', 'item_name']
-                }
+                },
             ],
+
+            attributes: {
+                include: [
+                    'category_name',
+                    [sequelize.literal(`SUM(transactions.amount) OVER (PARTITION BY category_name)`), 'total']
+                ]
+            }
         });
 
         const catsData = await Category.findAll()
 
-        
         const categories = await transactionData.map((category) => category.get({ plain: true }));
 
         const cats = await catsData.map((cat) => cat.get({ plain: true }));
-        
-        console.log(cats);
+
 
         res.render('manage-transactions', {
             // transactions
@@ -69,10 +87,52 @@ router.get('/manage-transactions', withAuth,  async (req, res) => {
 
 });
 
+// Route for chart-view
 router.get('/chart-view', withAuth, async (req, res) => {
-   try {
-        res.render('chart-view')
-   } catch (err) {
+    try {
+        res.render('chart-view', {
+            user_id: req.session.user_id,
+        })
+    } catch (err) {
         res.status(500).json(err);
     }
 });
+
+// Past Reports Page
+router.get('/past-reports/:month', withAuth, async (req, res) => {
+
+    try {
+
+        const transactionData = await Category.findAll({
+            include: [
+                {
+                    model: Transactions,
+                    where: {
+                        user_id: req.session.user_id,
+                        transaction_date: {
+                            [Op.between]: [getStartDate(req.params.month), getEndDate(req.params.month)],
+                        }
+                    },
+                    attributes: ['transaction_date', 'amount', 'item_name']
+                }
+            ],
+        });
+
+
+        const categories = await transactionData.map((category) => category.get({ plain: true }));
+
+
+        // Change page
+        res.render('past-reports', {
+            // transactions
+            categories,
+            user_id: req.session.user_id,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+});
+
+module.exports = router;
