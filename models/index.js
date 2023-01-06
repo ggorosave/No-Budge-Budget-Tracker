@@ -1,7 +1,7 @@
 // Boiler-plate code ***Will need to be updated!*** 
 const User = require('./User');
-const Category = require('./Category');
-const Transactions = require('./Transactions');
+const Category = require('./category');
+const Transactions = require('./transactions');
 
 User.hasMany(Transactions, {
   foreignKey: 'user_id'

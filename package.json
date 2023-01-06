@@ -16,7 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "algebra.js": "^0.2.6",
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dayjs": "^1.11.7",

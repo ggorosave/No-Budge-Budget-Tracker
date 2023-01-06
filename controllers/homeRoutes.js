@@ -1,7 +1,7 @@
 // This is where tell the server what data and where to render it
 const router = require('express').Router();
 const { Op } = require("sequelize");
-const { User, Category, Transactions } = require('../models');
+const { Category, Transactions } = require('../models');
 const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 const { dateGetter, getStartDate, getEndDate, startDate, endDate } = require('../utils/date.js')
