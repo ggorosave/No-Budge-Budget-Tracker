@@ -10,20 +10,28 @@ const getChart = async () => {
 
         // Creates arrays of data from fetch
         const chartData = await response.json();
-        const categories = await chartData.map((category) => category.category_name);
-        const totals = await chartData.map((category) => category.total);
+        const filteredData = await chartData.filter((obj) => obj.category_name !== 'INCOME');
+        const incomeData = await chartData.filter((obj) => obj.category_name == 'INCOME');
+        const categories = await filteredData.map((category) => category.category_name);
+        // Math >_<
+        const income = await incomeData[0].total;
+        const savings = await income - filteredData.map((category) => Number(category.total)).reduce((total, num) => total + num, 0);
+        const savingsRatio = await savings / income;
+        const ratios = await filteredData.map((category) => category.total / income * 100);
 
+        // Chart Logic
         Chart.defaults.font.family = 'IBM Plex Sans';
         Chart.defaults.font.size = 18;
 
         let budgetChart = new Chart(myChart, {
             type: 'doughnut',
             data: {
-                labels: [...categories],
+                labels: [...categories, 'Savings'],
                 datasets: [{
                     label: 'Amount',
                     data: [
-                        ...totals
+                        ...ratios,
+                        savingsRatio
                     ],
                     backgroundColor: [
                         '#022B3A',

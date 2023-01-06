@@ -19,7 +19,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // route to get transaction data
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
 
     const transactionData = await Category.findAll({

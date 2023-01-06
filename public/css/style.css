@@ -151,7 +151,7 @@ td {
         z-index: 1;
     }
 
-    #tr-wrapper, #signup-wrapper {
+    #login-wrapper, #signup-wrapper {
         margin: 14em 0;
         width: 100%;
     }
@@ -196,6 +196,6 @@ td {
 
     #myChart {
         margin-top: 16em;
-        width: 100;
+        width: 100% !important;
     }
 }
