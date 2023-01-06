@@ -1,5 +1,3 @@
-// const dateGetter = require('../../utils/date');
-
 const addTransactionFormHandler = async (event) => {
 
     event.preventDefault();
@@ -37,10 +35,6 @@ const addCategoryFormHandler = async (event) => {
 
     if (category_name) {
 
-        console.log('name: ' + category_name);
-
-        // window.alert('Category input recieved!')
-
         // makes fetch request to user api
         const response = await fetch('/api/categories', {
             method: 'POST',
@@ -64,8 +58,6 @@ const dateGetter = () => {
     return `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
 };
 
-// Add income button event listener
-// document.querySelector('#submit-income').addEventListener('click', addIncomeFormHandler);
 // Add transaction button event listener
 document.querySelector('#submit-transaction').addEventListener('click', addTransactionFormHandler);
 // Add category button event listener
