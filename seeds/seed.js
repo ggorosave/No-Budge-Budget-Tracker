@@ -22,26 +22,18 @@ const seedDatabase = async () => {
   await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
-  })
+  });
 
   
   await Category.bulkCreate(categoryData, {
     individualHooks: true,
     returning: true,
-  })
+  });
   
   await Transactions.bulkCreate(transactionsData, {
     individualHooks: true,
     returning: true,
-  })
-  
-  
-  
-  
-  
-  
-  
-  ;
+  });
 
   process.exit(0);
 };

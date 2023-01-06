@@ -11,10 +11,7 @@ const signUpFormHandler = async (event) => {
     // checks that user input all fields
     if (name && email && password) {
 
-        // console.log('name: ' + name)
-        // console.log('email: ' + email)
-        // console.log('password: ' + password)
-
+      
         // makes fetch request to user api (may change depending on routes)
         const response = await fetch('/api/users/signup', {
             method: 'POST',
