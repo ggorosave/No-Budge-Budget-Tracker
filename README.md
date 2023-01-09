@@ -1,7 +1,7 @@
 # No-Budge-Budget-Tracker
 ![License](https://img.shields.io/badge/License-MIT-blue) ![HTML](https://img.shields.io/badge/HTML-51.7%25-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-30.8%25-blue) ![Handlebars](https://img.shields.io/badge/Handlebars-13.7%25-blue) ![CSS](https://img.shields.io/badge/CSS-3.8%25-blue)
 ## Description
-A full stack application that takes in user data and helps them keep track of their monthly income and expenses to set personal finance goals.
+No Budge is a simple budget tracker meant for anyone interested in keeping a closer eye on their finances. It’s a full stack application that showcases our abilities to create and implement a database, a server, and facilitate the user experience with a clean and easy to navigate interface. We built this application using the following technologies: [Node.js](https://nodejs.org/en/), [Handlebars](https://www.npmjs.com/package/express-handlebars), [Express](https://www.npmjs.com/package/express), [Sequelize](https://sequelize.org/), [mysql2](https://www.npmjs.com/package/mysql2), [Express Session](https://www.npmjs.com/package/express-session), [Dotenv](https://www.npmjs.com/package/dotenv), [Bycrypt](https://www.npmjs.com/package/bcrypt), [Chart.js](https://www.chartjs.org/), and of course, JavaScript, HTML, and CSS. We used the [Bootstrap](https://getbootstrap.com/docs/4.5) framework and the application was deployed through [Heroku](https://www.heroku.com/).
 
 ## Table Of Contents 
 - [Installation](#installation)
