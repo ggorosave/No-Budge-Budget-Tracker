@@ -92,6 +92,7 @@ router.get('/chart-view', withAuth, async (req, res) => {
     try {
         res.render('chart-view', {
             user_id: req.session.user_id,
+            logged_in: req.session.logged_in
         })
     } catch (err) {
         res.status(500).json(err);
